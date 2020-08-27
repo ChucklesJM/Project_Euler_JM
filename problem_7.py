@@ -5,7 +5,7 @@ primes = []
 p = 2
 
 #Setting up the loop
-while not len(primes) == 100:
+while not len(primes) == 10001:
     num_prime = True
 
 #Eleminate any even candidate primes
@@ -17,6 +17,7 @@ while not len(primes) == 100:
     for x in range(3, p-1, 2):
         if p % x == 0:
             num_prime = False
+            break
 
     #print("Checked :", p)
 
@@ -42,4 +43,5 @@ print("the number of primes found was %d" %len(primes))
 # second run: 9:29.96
 # third run: 6:14.07
 # fourth run: 2:36.36
-# fifth run: 2:33.37  ***current state***
+# fifth run: 2:33.37  
+# sixth run: 00:29.76 ***current state***

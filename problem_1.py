@@ -5,6 +5,7 @@ sum_list=[]
 for x in range(1000):
     if x%5==0:
         sum_list.append(x)
+        
 for x in range(1000):
     if x%3==0 and not x%5==0:
         sum_list.append(x)
@@ -12,3 +13,7 @@ for x in range(1000):
 print(sum_list)
 #Add all the numbers in the sum list
 print(sum(sum_list))
+
+
+# This also works:
+#print(sum([x for x in range(1000) if x%3==0 or x%5==0]))
