@@ -21,7 +21,7 @@ L = [75,
 
 #number of rows in the triangle plus one
 
-n = int (math.sqrt(2 * len(L) + (0.25)) - 0.5 + 1)
+n = int(math.sqrt(2 * len(L) + (0.25)) - 0.5 + 1)
 m = 0
 
 indices = []
@@ -32,6 +32,8 @@ for x in range(1,n):
     indices.append((hold, m))
 
 rows = []
+
+print(indices)
 
 for x, y in indices:
      A = L[x:y]

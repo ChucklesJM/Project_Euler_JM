@@ -113,6 +113,11 @@ def factors(n):
             factors.append(x)
     return factors
 
+#Alternatively
+
+def fact(n):
+    return sum([x for x in range(1,n) if n%x == 0])
+
 #Function for checking if two integers are relatively prime:
 #(requires the one above to work)
 
@@ -217,6 +222,19 @@ def primes_Lthan(n):
 
             x += 1
 
+    return primes
+
+#This is a better version based off of the pseudo code on the wiki page
+
+def Sieve_Erato(n):
+    primes = []
+    check = [True for n in range(0, n+1)]
+    for i in range(2, n+1):
+        if check[i] == True:
+            primes.append(i)
+            for j in range((i)**2,n+1,(i)):
+                try: check[j] = False
+                except: pass
     return primes
 
 #___________________________________________________________
@@ -334,3 +352,24 @@ def Collatz_length(a):
         if y == a:
             result.append((x, y))
     return result
+
+#_________________________________________________________________
+#Function finds the maximum path sum in a triangle starting from
+# the top moving to the bottom
+
+def max_path(triangle):
+    triangle = [int(x) for x in triangle.split()]
+    n = int( (2 * len(triangle) + (0.25))**(1/2) - 0.5 + 1)
+    tri = lambda n: (n * (n+1)) // 2
+    X = list(map(tri, list(range(n-1))))
+    Y = list(map(tri, list(range(1,n))))
+    condense = lambda x,y : (x,y)
+    rows = [triangle[a:b] for a,b in list(map(condense, X, Y))]
+    while len(rows) > 1:
+        for x in range(len(rows[-1])-1):
+            if rows[-1][x] >= rows[-1][x+1]:
+                rows[-2][x] += rows[-1][x]
+            else:
+                rows[-2][x] += rows[-1][x+1]
+        del rows[-1]
+    return rows
